@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Evolve API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/v1/login:
+    get:
+      tags: [Evolve]
+      operationId: login
+      parameters:
+        - name: ip
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: nickname
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+  /api/v1/dis-code:
+    get:
+      tags: [Evolve]
+      operationId: disCode
+      parameters:
+        - name: nickname
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: message
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 1000
+        - name: ip
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+  /api/v1/access:
+    get:
+      tags: [Evolve]
+      operationId: access
+      parameters:
+        - name: grantor
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: grantee
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: email
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: level
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '502':
+          description: Bad Gateway
+  /api/v1/punishment:
+    get:
+      tags: [Evolve]
+      operationId: punishment
+      parameters:
+        - name: submittedBy
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: violator
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: ptype
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: violation
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '502':
+          description: Bad Gateway
