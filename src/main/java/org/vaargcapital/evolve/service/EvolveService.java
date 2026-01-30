@@ -54,7 +54,7 @@ public class EvolveService {
                         appUserRepository.findByNickname(nickname),
                         ipAddressRepository.findByIp(ip)
                 ))
-                .flatMap(tuple -> userIpRepository.insertIfNotExists(tuple.getT1().getId(), tuple.getT2().getId()))
+                .flatMap(tuple -> userIpRepository.insertUserIpIfNotExists(tuple.getT1().getId(), tuple.getT2().getId()))
                 .then(loginHistoryRepository.save(new LoginHistory(null, nickname, ip, LocalDateTime.now(), true)))
                 .then();
     }

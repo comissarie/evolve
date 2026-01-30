@@ -7,11 +7,18 @@ spring:
     username: app
     password: app
   flyway:
+    enabled: true
     url: jdbc:postgresql://postgres:5432/app
     user: app
     password: app
+    locations: classpath:db/migration
+
+logging:
+  level:
+    root: INFO
+    org.flywaydb: DEBUG
 
 app:
   googleSheets:
-    generalBaseUrl: https://script.google.com/macros/s/GENERAL/exec
-    disBaseUrl: https://script.google.com/macros/s/PUNISHMENT/exec
+    generalBaseUrl: https://script.google.com/macros/s/AKfycbzNPh2GqaYwO8jlcPYPHz9zOXiS1rFM3V62HiF5xnex_Yynp_3ktWZChzFLWHviVa7u/exec
+    disBaseUrl: https://script.google.com/macros/s/AKfycbzBrD3lRWL7upwq6gKO95BTtlLmkSij-B383E42oaLd2ydDG61KHnmuP0yTatQSO2BOLw/exec
